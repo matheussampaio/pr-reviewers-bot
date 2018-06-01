@@ -1,6 +1,7 @@
 const github = require('octonode')
 const dotenv = require('dotenv')
 const nconf = require('nconf')
+const fs = require('fs-extra')
 
 main()
 
@@ -14,6 +15,7 @@ function main() {
 
   // pr.createReviewRequests(['moisesflores22'], (...args) => console.log(...args))
 }
+
 
 function initEnvironmentVariables() {
   dotenv.config()
