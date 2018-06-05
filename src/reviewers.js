@@ -1,50 +1,47 @@
 const _ = require('lodash')
 
-// Set.prototype.pop = function() {
-//   if (this.size) {
-//     const value = this.values().next().value;
-
-//     this.delete(value);
-
-//     return value
-//   }
-// }
+const UniqueQueue = require('./unique-queue')
 
 class Reviewers {
-  constructor({ team = [], reviewers, numberOfReviewers = 1 } = {}) {
+  constructor({ team = [], queue, numberOfReviewers = 1 } = {}) {
     this.team = _.clone(team)
-    this.reviewers = _.clone(reviewers || this.team)
+    this.queue = new UniqueQueue(queue || this.team)
     this.numberOfReviewers = Math.min(numberOfReviewers, this.team.length)
   }
 
   getReviewers({ filterUsers = [] } = {}) {
+    const skipTeamMembers = _.intersection(this.team, filterUsers)
+    const eligibleUsersInTheTeam = _.difference(this.team, skipTeamMembers)
+
+    if (eligibleUsersInTheTeam.length < this.numberOfReviewers) {
+      throw new Error('not enough elible team members')
+    }
+
     const selectedReviewers = []
 
     while (selectedReviewers.length < this.numberOfReviewers) {
-      if (this.reviewers.length === 0) {
-        this.reviewers = _.clone(this.team)
-      }
+      const reviewer = this.getReviewer({ filterUsers: skipTeamMembers.concat(selectedReviewers) })
 
-      selectedReviewers.push(this.getReviewer({ filterUsers }))
+      if (reviewer == null) {
+        this.queue.addAll(this.team)
+      } else {
+        selectedReviewers.push(reviewer)
+      }
     }
 
     return selectedReviewers
   }
 
   getReviewer({ filterUsers = [] } = {}) {
-    const reviewerIndex = this.reviewers.findIndex(user => filterUsers.indexOf(user) === -1)
+    for (let i = 0; i < this.queue.size(); i++) {
+      const user = this.queue.get(i)
 
-    if (reviewerIndex === -1) {
-
+      if (!filterUsers.includes(user)) {
+        return this.queue.delete(user)
+      }
     }
 
-    const reviewers = this.reviewers.splice(reviewerIndex, 1)
-
-    if (reviewers.length) {
-      return reviewers[0]
-    }
-
-    throw new Error(`can't find a reviewer`)
+    return null
   }
 }
 
