@@ -1,22 +1,51 @@
-function getNextReviewers({ lastReviewer, team = [], numberOfReviewers = 1 } = {}) {
-  if (team.length === 0) {
-    return null
+const _ = require('lodash')
+
+// Set.prototype.pop = function() {
+//   if (this.size) {
+//     const value = this.values().next().value;
+
+//     this.delete(value);
+
+//     return value
+//   }
+// }
+
+class Reviewers {
+  constructor({ team = [], reviewers, numberOfReviewers = 1 } = {}) {
+    this.team = _.clone(team)
+    this.reviewers = _.clone(reviewers || this.team)
+    this.numberOfReviewers = Math.min(numberOfReviewers, this.team.length)
   }
 
-  if (lastReviewer == null) {
-    return team.slice(0, numberOfReviewers)
+  getReviewers({ filterUsers = [] } = {}) {
+    const selectedReviewers = []
+
+    while (selectedReviewers.length < this.numberOfReviewers) {
+      if (this.reviewers.length === 0) {
+        this.reviewers = _.clone(this.team)
+      }
+
+      selectedReviewers.push(this.getReviewer({ filterUsers }))
+    }
+
+    return selectedReviewers
   }
 
-  const lastReviewerIndex = team.indexOf(lastReviewer)
+  getReviewer({ filterUsers = [] } = {}) {
+    const reviewerIndex = this.reviewers.findIndex(user => filterUsers.indexOf(user) === -1)
 
-  if (lastReviewerIndex === -1) {
-    return team.slice(0, numberOfReviewers)
+    if (reviewerIndex === -1) {
+
+    }
+
+    const reviewers = this.reviewers.splice(reviewerIndex, 1)
+
+    if (reviewers.length) {
+      return reviewers[0]
+    }
+
+    throw new Error(`can't find a reviewer`)
   }
-
-  const nextReviewerIndex = (lastReviewerIndex + 1) % team.length
-
-  return team.slice(nextReviewerIndex, nextReviewerIndex + numberOfReviewers)
 }
 
-module.exports = { getNextReviewers }
-
+module.exports = Reviewers
