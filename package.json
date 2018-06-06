@@ -1,12 +1,13 @@
 {
   "name": "pr-reviewers-bot",
-  "version": "1.0.0",
-  "description": "library to add PR's reviewers",
+  "version": "0.0.0-development",
+  "description": "Small library/bot to suggest reviewers to PR's",
   "main": "src/index.js",
   "scripts": {
     "test": "ava",
     "test:watch": "ava --watch",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "node",
@@ -14,8 +15,15 @@
     "github",
     "bot"
   ],
-  "author": "Matheus Sampaio <matheus@sampaio.us>",
-  "license": "ISC",
+  "author": "Matheus Sampaio <matheus@sampaio.us> (http://matheus.sampaio.us)",
+  "homepage": "https://github.com/matheussampaio/pr-reviewers-bot",
+  "license": "MIT",
+  "bin": {
+    "prreviewers": "src/index.js"
+  },
+  "files": [
+    "src"
+  ],
   "dependencies": {
     "dotenv": "^5.0.1",
     "fs-extra": "^6.0.1",
@@ -26,11 +34,12 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "semantic-release": "^15.5.0",
     "sinon": "^5.0.10"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matheussampaio/pr-reviewers-bot.git"
+    "url": "https://github.com/matheussampaio/pr-reviewers-bot.git"
   },
   "bugs": {
     "url": "https://github.com/matheussampaio/pr-reviewers-bot/issues"

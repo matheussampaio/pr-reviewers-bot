@@ -28,8 +28,29 @@ jobs:
             - node_modules
       - run: npm test
 
+  semantic_release:
+    <<: *defaults
+    steps:
+      - restore_cache: &restore_src_cache
+          keys:
+            - v1-source-cache-{{ .Branch }}
+            - v1-source-cache-
+      - checkout
+      - restore_cache: &restore_node_modules
+          keys:
+            - v1-node_modules-{{ checksum "package-lock.json" }}
+            - v1-node_modules-
+      - run: npm ci
+      - run: npm run semantic-release
+
 workflows:
   version: 2
   continuous_integration:
     jobs:
       - install_dependencies_and_test
+      - semantic_release:
+          requires:
+            - install_dependencies_and_test
+          filters:
+            branches:
+              only: master
