@@ -8,7 +8,12 @@
     "test:watch": "ava --watch",
     "start": "node src/index.js"
   },
-  "keywords": ["node", "ava", "github", "bot"],
+  "keywords": [
+    "node",
+    "ava",
+    "github",
+    "bot"
+  ],
   "author": "Matheus Sampaio <matheus@sampaio.us>",
   "license": "ISC",
   "dependencies": {

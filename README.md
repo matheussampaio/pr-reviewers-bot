@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master.svg?style=svg)](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master)
+
 PR Reviewers Bot
 =================
 
