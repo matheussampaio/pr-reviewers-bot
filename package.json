@@ -1,15 +1,15 @@
 {
-  "name": "github-review",
+  "name": "pr-reviewers-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "library to add PR's reviewers",
   "main": "src/index.js",
   "scripts": {
     "test": "ava",
     "test:watch": "ava --watch",
     "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["node", "ava", "github", "bot"],
+  "author": "Matheus Sampaio <matheus@sampaio.us>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^5.0.1",
@@ -22,5 +22,12 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "sinon": "^5.0.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheussampaio/pr-reviewers-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matheussampaio/pr-reviewers-bot/issues"
   }
 }

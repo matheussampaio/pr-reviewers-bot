@@ -1,4 +1,4 @@
-Github PR Reviews
+PR Reviewers Bot
 =================
 
 ## How to install
