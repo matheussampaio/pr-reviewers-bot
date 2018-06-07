@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const debug = require('debug')('pr-reviewers-bot')
 
 const CLI = require('./cli')
