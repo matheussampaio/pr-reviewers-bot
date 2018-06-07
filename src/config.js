@@ -3,8 +3,8 @@ const path = require('path')
 const yaml = require('yaml')
 
 class Config {
-  constructor(configPath) {
-    this.configPath = configPath
+  constructor(configPath = '.') {
+    this.configPath = path.resolve(configPath)
 
     this.data = null
   }
@@ -16,7 +16,7 @@ class Config {
   }
 
   readFile() {
-    return fs.readFile(path.join(__dirname, this.configPath), 'utf-8')
+    return fs.readFile(this.configPath, 'utf-8')
   }
 }
 
