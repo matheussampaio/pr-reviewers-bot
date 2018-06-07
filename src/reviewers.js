@@ -3,9 +3,10 @@ const _ = require('lodash')
 const UniqueQueue = require('./unique-queue')
 
 class Reviewers {
-  constructor({ team = [], queue, numberOfReviewers = 1 } = {}) {
+  constructor({ team = [], queue, numberOfReviewers = 1, shuffleTeams = false } = {}) {
     this.team = _.clone(team)
-    this.queue = new UniqueQueue(queue || this.team)
+    this.shuffleTeams = shuffleTeams
+    this.queue = new UniqueQueue(queue || (this.shuffleTeams ? _.shuffle(this.team) : this.team))
     this.numberOfReviewers = Math.min(numberOfReviewers, this.team.length)
   }
 
@@ -23,7 +24,7 @@ class Reviewers {
       const reviewer = this.getReviewer({ filterUsers: skipTeamMembers.concat(selectedReviewers) })
 
       if (reviewer == null) {
-        this.queue.addAll(this.team)
+        this.queue.addAll(this.shuffleTeams ? _.shuffle(this.team) : this.team)
       } else {
         selectedReviewers.push(reviewer)
       }
