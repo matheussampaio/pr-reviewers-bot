@@ -1,19 +1,37 @@
-const github = require('octonode')
-const dotenv = require('dotenv')
-const nconf = require('nconf')
-const fs = require('fs-extra')
+const debug = require('debug')('pr-reviewers-bot')
+
+const CLI = require('./cli')
+const Config = require('./config')
+const Reviewers = require('./reviewers')
 
 main()
+  .catch(error => {
+    console.error('ERROR:', error.message)
+    process.exit(1)
+  })
 
-function main() {
-  initEnvironmentVariables()
+async function main() {
+  const cli = new CLI()
 
-  const { GH_TOKEN, GH_REPOSITORY } = process.env
+  debug('cli argv', cli.argv)
 
-  const client = github.client(GH_TOKEN)
-  const pr = client.pr(GH_REPOSITORY, 2)
+  const config = new Config(cli.argv.config)
 
-  // pr.createReviewRequests(['moisesflores22'], (...args) => console.log(...args))
+  await config.read()
+
+  debug('config data', config.data)
+
+  const options = {
+    team: config.data.configuration.team,
+    numberOfReviewers: cli.argv.number || config.data.configuration.number_of_reviewers,
+    shuffleTeams: true
+  }
+
+  debug('reviewers options', options)
+
+  const reviewers = new Reviewers(options)
+
+  console.log(reviewers.getReviewers({ filterUsers: cli.argv.filter }))
 }
 
 
