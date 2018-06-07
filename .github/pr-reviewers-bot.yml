@@ -1,0 +1,10 @@
+configuration:
+  number_of_reviewers: 2
+  project_name: matheussampaio/github-review
+  team:
+    - adrian
+    - andres
+    - alexis
+    - matheussampaio
+    - moises
+    - rodolfo
