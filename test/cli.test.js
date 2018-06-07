@@ -16,10 +16,10 @@ test('number should be 2', t => {
   t.is(cli.argv.number, 2)
 })
 
-test('default config should be local .github/pr-bot.yml', t => {
+test('default config should be local .github/pr-reviewers-bot.yml', t => {
   const cli = new CLI(commands)
 
-  t.is(cli.argv.config, './.github/pr-bot.yml')
+  t.is(cli.argv.config, './.github/pr-reviewers-bot.yml')
 })
 
 test('filter should be array', t => {

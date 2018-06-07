@@ -25,7 +25,7 @@ class CLI {
           description: 'Config path',
           requiresArgs: true,
           type: 'string',
-          default: './.github/pr-bot.yml'
+          default: './.github/pr-reviewers-bot.yml'
         },
         f: {
           alias: 'filter',
