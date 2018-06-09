@@ -3,19 +3,19 @@ const path = require('path')
 const yaml = require('yaml')
 
 class Config {
-  constructor(configPath = '.') {
+  constructor (configPath = '.') {
     this.configPath = path.resolve(configPath)
 
     this.data = null
   }
 
-  async read() {
+  async read () {
     const file = await this.readFile()
 
     this.data = yaml.eval(file)
   }
 
-  readFile() {
+  readFile () {
     return fs.readFile(this.configPath, 'utf-8')
   }
 }

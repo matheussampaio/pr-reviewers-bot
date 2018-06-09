@@ -12,7 +12,7 @@ main()
     process.exit(1)
   })
 
-async function main() {
+async function main () {
   const cli = new CLI()
 
   debug('cli argv', cli.argv)
@@ -35,13 +35,3 @@ async function main() {
 
   console.log(reviewers.getReviewers({ filterUsers: cli.argv.filter }))
 }
-
-
-function initEnvironmentVariables() {
-  dotenv.config()
-
-  nconf.argv()
-    .env()
-    .required(['GH_TOKEN', 'GH_REPOSITORY'])
-}
-

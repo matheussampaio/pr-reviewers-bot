@@ -3,14 +3,14 @@ const _ = require('lodash')
 const UniqueQueue = require('./unique-queue')
 
 class Reviewers {
-  constructor({ team = [], queue, numberOfReviewers = 1, shuffleTeams = false } = {}) {
+  constructor ({ team = [], queue, numberOfReviewers = 1, shuffleTeams = false } = {}) {
     this.team = _.clone(team)
     this.shuffleTeams = shuffleTeams
     this.queue = new UniqueQueue(queue || (this.shuffleTeams ? _.shuffle(this.team) : this.team))
     this.numberOfReviewers = Math.min(numberOfReviewers, this.team.length)
   }
 
-  getReviewers({ filterUsers = [] } = {}) {
+  getReviewers ({ filterUsers = [] } = {}) {
     const skipTeamMembers = _.intersection(this.team, filterUsers)
     const eligibleUsersInTheTeam = _.difference(this.team, skipTeamMembers)
 
@@ -33,7 +33,7 @@ class Reviewers {
     return selectedReviewers
   }
 
-  getReviewer({ filterUsers = [] } = {}) {
+  getReviewer ({ filterUsers = [] } = {}) {
     for (let i = 0; i < this.queue.size(); i++) {
       const user = this.queue.get(i)
 

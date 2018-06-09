@@ -3,13 +3,13 @@ const yargs = require('yargs')
 const { version } = require('../package.json')
 
 class CLI {
-  constructor(parameters) {
+  constructor (parameters) {
     this.yargs = parameters == null ? yargs : yargs(parameters)
 
     this.init()
   }
 
-  init() {
+  init () {
     this.argv = this.yargs.usage('$0 <command> <params> [options]')
       .command('reviewers', 'Suggest reviewers to the PR', {
         n: {
@@ -40,7 +40,7 @@ class CLI {
       .help()
       .argv
 
-    this.argv.command = this.argv._[0];
+    this.argv.command = this.argv._[0]
   }
 }
 

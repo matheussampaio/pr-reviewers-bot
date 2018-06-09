@@ -4,10 +4,11 @@
   "description": "Small library/bot to suggest reviewers to PR's",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc --reporter=lcov ava",
-    "test:watch": "ava --watch",
+    "lint": "standard --fix",
+    "semantic-release": "semantic-release",
     "start": "node src/index.js",
-    "semantic-release": "semantic-release"
+    "test": "nyc --reporter=lcov ava",
+    "test:watch": "ava --watch"
   },
   "keywords": [
     "node",
@@ -37,7 +38,8 @@
     "ava": "^0.25.0",
     "nyc": "^12.0.2",
     "semantic-release": "^15.5.0",
-    "sinon": "^5.0.10"
+    "sinon": "^5.0.10",
+    "standard": "^11.0.1"
   },
   "repository": {
     "type": "git",

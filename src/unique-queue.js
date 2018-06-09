@@ -1,35 +1,35 @@
 class UniqueQueue {
-  constructor(elements = []) {
+  constructor (elements = []) {
     this.set = new Set()
 
     this.addAll(elements)
   }
 
-  add(element) {
+  add (element) {
     this.set.add(element)
   }
 
-  addAll(elements) {
+  addAll (elements) {
     elements.forEach(element => this.add(element))
   }
 
-  delete(element) {
+  delete (element) {
     return this.set.delete(element) ? element : null
   }
 
-  size() {
+  size () {
     return this.set.size
   }
 
-  isEmpty() {
+  isEmpty () {
     return this.set.size === 0
   }
 
-  get(index) {
+  get (index) {
     return index <= this.getAll().length && index >= 0 ? this.getAll()[index] : null
   }
 
-  getAll() {
+  getAll () {
     return Array.from(this.set)
   }
 }
