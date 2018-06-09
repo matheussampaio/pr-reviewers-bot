@@ -30,7 +30,6 @@ jobs:
       - store_test_results:
           path: coverage
 
-
   semantic_release:
     <<: *defaults
     steps:
@@ -51,9 +50,13 @@ workflows:
   continuous_integration:
     jobs:
       - install_dependencies_and_test
-      - semantic_release:
+      - hold_release:
+          type: approval
           requires:
             - install_dependencies_and_test
           filters:
             branches:
               only: master
+      - semantic_release:
+          requires:
+            - hold_release

@@ -30,8 +30,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.10",
+    "lowdb": "^1.0.0",
     "probot": "^6.2.0",
-    "probot-config": "^0.1.0"
+    "probot-config": "github:probot/probot-config"
   },
   "devDependencies": {
     "ava": "^0.25.0",

@@ -1,10 +1,8 @@
-configuration:
-  number_of_reviewers: 2
-  project_name: matheussampaio/github-review
-  team:
-    - adrian
-    - andres
-    - alexis
-    - matheussampaio
-    - moises
-    - rodolfo
+min_reviewers_per_pr: 2
+reviewers:
+  - adrian-gallardo-wizeline
+  - a-novelo
+  - AlexisGlez
+  - matheussampaio
+  - MoisesFlores22
+  - Rudycc
