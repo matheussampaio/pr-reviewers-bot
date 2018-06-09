@@ -1,37 +1,16 @@
-#! /usr/bin/env node
+const getConfig = require('probot-config')
 
-const debug = require('debug')('pr-reviewers-bot')
+// const Reviewers = require('./reviewers')
 
-const CLI = require('./cli')
-const Config = require('./config')
-const Reviewers = require('./reviewers')
+module.exports = robot => {
+  robot.on('*', async context => {
+    context.log({ event: context.event, action: context.payload.action })
 
-main()
-  .catch(error => {
-    console.error('ERROR:', error.message)
-    process.exit(1)
+    const config = await getConfig(context, 'pr-reviewers-bot.yml')
+
+    console.log(config)
+    // const params = context.issue({ body: 'Hello World!' })
+
+    // return context.github.issues.createComment(params)
   })
-
-async function main () {
-  const cli = new CLI()
-
-  debug('cli argv', cli.argv)
-
-  const config = new Config(cli.argv.config)
-
-  await config.read()
-
-  debug('config data', config.data)
-
-  const options = {
-    team: config.data.configuration.team,
-    numberOfReviewers: cli.argv.number || config.data.configuration.number_of_reviewers,
-    shuffleTeams: true
-  }
-
-  debug('reviewers options', options)
-
-  const reviewers = new Reviewers(options)
-
-  console.log(reviewers.getReviewers({ filterUsers: cli.argv.filter }))
 }

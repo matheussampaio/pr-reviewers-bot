@@ -1,14 +1,18 @@
 {
   "name": "pr-reviewers-bot",
   "version": "0.0.0-development",
-  "description": "Small library/bot to suggest reviewers to PR's",
+  "description": "Small bot to suggest reviewers to PR's",
   "main": "src/index.js",
-  "scripts": {
-    "lint": "standard --fix",
-    "semantic-release": "semantic-release",
-    "start": "node src/index.js",
-    "test": "nyc --reporter=lcov ava",
-    "test:watch": "ava --watch"
+  "private": true,
+  "author": "Matheus Sampaio <matheus@sampaio.us> (http://matheus.sampaio.us)",
+  "homepage": "https://github.com/matheussampaio/pr-reviewers-bot",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matheussampaio/pr-reviewers-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matheussampaio/pr-reviewers-bot/issues"
   },
   "keywords": [
     "node",
@@ -16,36 +20,26 @@
     "github",
     "bot"
   ],
-  "author": "Matheus Sampaio <matheus@sampaio.us> (http://matheus.sampaio.us)",
-  "homepage": "https://github.com/matheussampaio/pr-reviewers-bot",
-  "license": "MIT",
-  "bin": {
-    "prreviewers": "src/index.js"
+  "scripts": {
+    "dev": "nodemon --exec \"npm start\"",
+    "lint": "standard --fix",
+    "semantic-release": "semantic-release",
+    "start": "probot run ./src/index.js",
+    "test": "nyc --reporter=lcov ava && standard",
+    "test:watch": "ava --watch"
   },
-  "files": [
-    "src"
-  ],
   "dependencies": {
-    "debug": "^3.1.0",
-    "dotenv": "^5.0.1",
-    "fs-extra": "^6.0.1",
-    "nconf": "^0.10.0",
-    "octonode": "^0.9.2",
-    "yaml": "^0.3.0",
-    "yargs": "^11.0.0"
+    "lodash": "^4.17.10",
+    "probot": "^6.2.0",
+    "probot-config": "^0.1.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "nodemon": "^1.17.5",
     "nyc": "^12.0.2",
     "semantic-release": "^15.5.0",
     "sinon": "^5.0.10",
+    "smee-client": "^1.0.1",
     "standard": "^11.0.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/matheussampaio/pr-reviewers-bot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/matheussampaio/pr-reviewers-bot/issues"
   }
 }
