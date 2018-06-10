@@ -21,7 +21,7 @@
     "bot"
   ],
   "scripts": {
-    "dev": "nodemon --exec \"npm start\"",
+    "dev": "nodemon -w src --exec \"npm start\"",
     "lint": "standard --fix",
     "semantic-release": "semantic-release",
     "start": "probot run ./src/index.js",
@@ -31,8 +31,7 @@
   "dependencies": {
     "lodash": "^4.17.10",
     "lowdb": "^1.0.0",
-    "probot": "^6.2.0",
-    "probot-config": "github:probot/probot-config"
+    "probot": "^6.2.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",

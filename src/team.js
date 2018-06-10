@@ -2,15 +2,15 @@ const _ = require('lodash')
 
 const UniqueQueue = require('./unique-queue')
 
-class Reviewers {
-  constructor ({ team = [], queue, numberOfReviewers = 1, shuffleTeams = false } = {}) {
+class Team {
+  constructor ({ team = [], queue, numberOfReviewers = 1, shuffleTeam = false } = {}) {
     this.team = _.clone(team)
-    this.shuffleTeams = shuffleTeams
-    this.queue = new UniqueQueue(queue || (this.shuffleTeams ? _.shuffle(this.team) : this.team))
+    this.shuffleTeam = shuffleTeam
+    this.queue = new UniqueQueue(queue || (this.shuffleTeam ? _.shuffle(this.team) : this.team))
     this.numberOfReviewers = Math.min(numberOfReviewers, this.team.length)
   }
 
-  getReviewers ({ filterUsers = [] } = {}) {
+  getNextReviewers ({ filterUsers = [] } = {}) {
     const skipTeamMembers = _.intersection(this.team, filterUsers)
     const eligibleUsersInTheTeam = _.difference(this.team, skipTeamMembers)
 
@@ -24,7 +24,7 @@ class Reviewers {
       const reviewer = this.getReviewer({ filterUsers: skipTeamMembers.concat(selectedReviewers) })
 
       if (reviewer == null) {
-        this.queue.addAll(this.shuffleTeams ? _.shuffle(this.team) : this.team)
+        this.queue.addAll(this.shuffleTeam ? _.shuffle(this.team) : this.team)
       } else {
         selectedReviewers.push(reviewer)
       }
@@ -44,6 +44,10 @@ class Reviewers {
 
     return null
   }
+
+  getQueue() {
+    return this.queue.getAll()
+  }
 }
 
-module.exports = Reviewers
+module.exports = Team
