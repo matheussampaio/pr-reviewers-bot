@@ -9,21 +9,21 @@ const DEFAULTS = {
 }
 
 class Database {
-  constructor(namespace) {
+  constructor (namespace) {
     this.namespace = namespace
 
     this.init()
   }
 
-  init() {
+  init () {
     db.defaults({ [this.namespace]: DEFAULTS }).write()
   }
 
-  getQueue() {
+  getQueue () {
     return db.get(`${this.namespace}.queue`).value()
   }
 
-  setQueue(queue) {
+  setQueue (queue) {
     db.set(`${this.namespace}.queue`, queue).write()
   }
 }

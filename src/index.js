@@ -26,7 +26,7 @@ module.exports = robot => {
         queue: db.getQueue(),
         team: await config.getTeam(),
         numberOfReviewers: await config.getMinTeviewersPerPR(),
-        shuffleTeam: config.getShuffleTeam(),
+        shuffleTeam: config.getShuffleTeam()
       })
 
       const nextReviewers = team.getNextReviewers({
@@ -44,7 +44,7 @@ module.exports = robot => {
   })
 }
 
-function addReviewersToPR(context, users) {
+function addReviewersToPR (context, users) {
   const options = context.issue({
     reviewers: users
   })
@@ -58,7 +58,7 @@ function addReviewersToPR(context, users) {
   return context.github.pullRequests.createReviewRequest(options)
 }
 
-function addComment(context, body) {
+function addComment (context, body) {
   const options = context.issue({ body })
 
   context.log('add comment', options)
@@ -70,7 +70,7 @@ function addComment(context, body) {
   return context.github.issues.createComment(options)
 }
 
-function createBody(reviewers) {
+function createBody (reviewers) {
   const reviewersWithAt = reviewers.map(user => `@${user}`)
 
   if (reviewersWithAt.length >= 1) {

@@ -45,7 +45,7 @@ class Team {
     return null
   }
 
-  getQueue() {
+  getQueue () {
     return this.queue.getAll()
   }
 }
