@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-const CONFIG_FILEPATH = 'pr-reviewers-bot.yml'
+const CONFIG_FILEPATH = process.env.CONFIGURATION_FILENAME || 'pr-reviewers-bot.yml'
 
 class Config {
   constructor(context) {

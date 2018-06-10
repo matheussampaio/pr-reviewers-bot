@@ -10,10 +10,6 @@ const PULL_REQUEST_EVENTS = [
 ]
 
 module.exports = robot => {
-  robot.on('*', async context => {
-    context.log('*', { event: context.event, action: context.payload.action })
-  })
-
   robot.on(PULL_REQUEST_EVENTS, async context => {
     context.log('prEvents', { event: context.event, action: context.payload.action })
 
@@ -41,7 +37,9 @@ module.exports = robot => {
 
       await addReviewersToPR(context, nextReviewers)
 
-      await addComment(context, 'test')
+      const body = createBody(nextReviewers)
+
+      await addComment(context, body)
     }
   })
 }
@@ -69,5 +67,19 @@ function addComment(context, body) {
     return Promise.resolve()
   }
 
-  return context.github.pullRequests.createComment(options)
+  return context.github.issues.createComment(options)
+}
+
+function createBody(reviewers) {
+  const reviewersWithAt = reviewers.map(user => `@${user}`)
+
+  if (reviewersWithAt.length >= 1) {
+    const lastIndex = reviewersWithAt.length - 1
+
+    reviewersWithAt[lastIndex] = `and ${reviewersWithAt[lastIndex]}`
+  }
+
+  const mentions = reviewersWithAt.join(', ')
+
+  return `Hi, I added ${mentions} to review this pull request.`
 }
