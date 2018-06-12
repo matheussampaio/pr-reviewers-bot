@@ -83,16 +83,17 @@ function addComment (context, body) {
   return context.github.issues.createComment(options)
 }
 
-function createBody (reviewers) {
-  const reviewersWithAt = reviewers.map(user => `@${user}`)
+function createBody (nextReviewers) {
+  const reviewersWithAt = nextReviewers.map(user => `@${user}`)
 
-  if (reviewersWithAt.length >= 1) {
-    const lastIndex = reviewersWithAt.length - 1
+  let mentions = reviewersWithAt[0]
 
-    reviewersWithAt[lastIndex] = `and ${reviewersWithAt[lastIndex]}`
+  if (reviewersWithAt.length > 1) {
+    const firstUsers = reviewersWithAt.slice(0, reviewersWithAt.length - 1)
+    const lastUser = reviewersWithAt[reviewersWithAt.length - 1]
+
+    mentions = firstUsers.join(', ') + ' and ' + lastUser
   }
-
-  const mentions = reviewersWithAt.join(', ')
 
   return `Hi, I added ${mentions} to review this pull request.`
 }
