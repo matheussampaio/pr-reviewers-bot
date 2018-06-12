@@ -8,14 +8,15 @@ class Config {
     this.config = null
   }
 
-  async get (path, defaults) {
-    if (this.config == null) {
-      this.config = await this.context.config(CONFIG_FILEPATH, {
-        min_reviewers_per_pr: 0,
-        reviewers: []
-      })
-    }
+  async load () {
+    this.config = await this.context.config(CONFIG_FILEPATH, {
+      min_reviewers_per_pr: 0,
+      reviewers: [],
+      shuffle_team: true
+    })
+  }
 
+  get (path, defaults) {
     return _.get(this.config, path, defaults)
   }
 
@@ -32,7 +33,7 @@ class Config {
   }
 
   getShuffleTeam () {
-    return this.get('shuffle_team', false)
+    return this.get('shuffle_team', true)
   }
 }
 
