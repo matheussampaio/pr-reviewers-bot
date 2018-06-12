@@ -6,7 +6,7 @@ const Database = require('./database')
 
 const PULL_REQUEST_EVENTS = [
   'pull_request.opened',
-  'pull_request.edited'
+  'pull_request.reopened'
 ]
 
 module.exports = robot => {
