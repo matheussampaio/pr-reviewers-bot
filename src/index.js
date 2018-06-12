@@ -20,11 +20,15 @@ module.exports = robot => {
     }
 
     const pullRequest = await context.github.pullRequests.get(context.issue())
-    const requestedReviewers = _.get(pullRequest, 'data.requested_reviewers', [])
+    const pullRequestReviews = await context.github.pullRequests.getReviews(context.issue())
+    const usersThatAlreadyReviewed = pullRequestReviews.data
+    const waitingReviewFromUsers = _.get(pullRequest, 'data.requested_reviewers', [])
+    const reviewers = waitingReviewFromUsers.concat(usersThatAlreadyReviewed)
+
     const owner = _.get(pullRequest, 'data.user.login')
     const repositoryNamespace = `${context.repo().owner}/${context.repo().repo}`
 
-    if (requestedReviewers.length >= config.getMinTeviewersPerPR()) {
+    if (reviewers.length >= config.getMinTeviewersPerPR()) {
       return context.log.info('this PR already contains enough reviewers, skipping...')
     }
 
@@ -35,12 +39,12 @@ module.exports = robot => {
     const team = new Team({
       queue: db.getQueue(),
       team: config.getTeam(),
-      numberOfReviewers: config.getMinTeviewersPerPR() - requestedReviewers.length,
+      numberOfReviewers: config.getMinTeviewersPerPR() - reviewers.length,
       shuffleTeam: config.getShuffleTeam()
     })
 
     const nextReviewers = team.getNextReviewers({
-      filterUsers: requestedReviewers.map(user => user.login).concat(owner)
+      filterUsers: reviewers.map(user => user.login).concat(owner)
     })
 
     context.log.info({ nextReviewers }, 'selected reviewers')
