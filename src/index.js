@@ -35,7 +35,7 @@ module.exports = robot => {
     const team = new Team({
       queue: db.getQueue(),
       team: config.getTeam(),
-      numberOfReviewers: config.getMinTeviewersPerPR(),
+      numberOfReviewers: config.getMinTeviewersPerPR() - requestedReviewers.length,
       shuffleTeam: config.getShuffleTeam()
     })
 
