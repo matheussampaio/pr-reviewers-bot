@@ -19,6 +19,10 @@ class Config {
     return _.get(this.config, path, defaults)
   }
 
+  enabled () {
+    return this.getMinTeviewersPerPR() && this.getTeam().length
+  }
+
   getMinTeviewersPerPR () {
     return this.get('min_reviewers_per_pr', 0)
   }

@@ -14,6 +14,11 @@ module.exports = robot => {
     context.log('prEvents', { event: context.event, action: context.payload.action })
 
     const config = new Config(context)
+
+    if (!config.enabled()) {
+      return
+    }
+
     const pullRequest = await context.github.pullRequests.get(context.issue())
     const requestedReviewers = _.get(pullRequest, 'data.requested_reviewers', [])
     const owner = _.get(pullRequest, 'data.user.login')
