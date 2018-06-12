@@ -30,7 +30,7 @@ jobs:
       - store_test_results:
           path: coverage
 
-  semantic_release:
+  release_to_npm:
     <<: *defaults
     steps:
       - restore_cache: &restore_src_cache
@@ -45,18 +45,38 @@ jobs:
       - run: npm ci
       - run: npm run semantic-release
 
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
 workflows:
   version: 2
   continuous_integration:
     jobs:
       - install_dependencies_and_test
-      - hold_release:
+      - hold_release_to_npm:
           type: approval
           requires:
             - install_dependencies_and_test
           filters:
             branches:
               only: master
-      - semantic_release:
+      - release_to_npm:
           requires:
-            - hold_release
+            - hold_release_to_npm
+      - hold_deploy:
+          type: approval
+          requires:
+            - install_dependencies_and_test
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - hold_deploy
