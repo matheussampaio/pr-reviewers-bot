@@ -26,7 +26,8 @@
     "semantic-release": "semantic-release",
     "start": "probot run ./src/index.js",
     "test": "nyc --reporter=lcov ava && standard",
-    "test:watch": "ava --watch"
+    "test:watch": "ava --watch",
+    "simulate:opened": "probot simulate pull_request ./test/fixtures/pull_request.opened.json ./src/index.js"
   },
   "dependencies": {
     "lodash": "^4.17.10",
