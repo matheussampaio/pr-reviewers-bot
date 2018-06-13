@@ -1,1 +1,153 @@
-{}
+{
+  "action": "created",
+  "issue": {
+    "url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/11",
+    "repository_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot",
+    "labels_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/11/labels{/name}",
+    "comments_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/11/comments",
+    "events_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/11/events",
+    "html_url": "https://github.com/matheussampaio/pr-reviewers-bot/pull/11",
+    "id": 331841737,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MTk0NDcwODYx",
+    "number": 11,
+    "title": "feat: add review command and refactor the code (a little bit more clean)",
+    "user": {
+      "login": "matheussampaio"
+    },
+    "labels": [
+      {
+        "id": 955998535,
+        "node_id": "MDU6TGFiZWw5NTU5OTg1MzU=",
+        "url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": {
+      "login": "matheussampaio"
+    },
+    "assignees": [
+      {
+        "login": "matheussampaio"
+      }
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-06-13T04:56:50Z",
+    "updated_at": "2018-06-13T04:57:14Z",
+    "closed_at": null,
+    "author_association": "OWNER",
+    "pull_request": {
+      "url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/pulls/11",
+      "html_url": "https://github.com/matheussampaio/pr-reviewers-bot/pull/11",
+      "diff_url": "https://github.com/matheussampaio/pr-reviewers-bot/pull/11.diff",
+      "patch_url": "https://github.com/matheussampaio/pr-reviewers-bot/pull/11.patch"
+    },
+    "body": "## What does this PR do?\r\n1. Break code into more functions and move most of them to `core.js`\r\n2. Add fixture files\r\n3. Add `/review` command"
+  },
+  "comment": {
+    "url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/comments/396813441",
+    "html_url": "https://github.com/matheussampaio/pr-reviewers-bot/pull/11#issuecomment-396813441",
+    "issue_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/11",
+    "id": 396813441,
+    "node_id": "MDEyOklzc3VlQ29tbWVudDM5NjgxMzQ0MQ==",
+    "user": {
+      "login": "matheussampaio"
+    },
+    "created_at": "2018-06-13T04:57:14Z",
+    "updated_at": "2018-06-13T04:57:14Z",
+    "author_association": "OWNER",
+    "body": "/review"
+  },
+  "repository": {
+    "id": 136270961,
+    "node_id": "MDEwOlJlcG9zaXRvcnkxMzYyNzA5NjE=",
+    "name": "pr-reviewers-bot",
+    "full_name": "matheussampaio/pr-reviewers-bot",
+    "owner": {
+      "login": "matheussampaio"
+    },
+    "private": false,
+    "html_url": "https://github.com/matheussampaio/pr-reviewers-bot",
+    "description": "Small library/bot to suggest reviewers to PR's ",
+    "fork": false,
+    "url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot",
+    "forks_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/forks",
+    "keys_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/teams",
+    "hooks_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/hooks",
+    "issue_events_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/events",
+    "assignees_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/tags",
+    "blobs_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/languages",
+    "stargazers_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/stargazers",
+    "contributors_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/contributors",
+    "subscribers_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/subscribers",
+    "subscription_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/subscription",
+    "commits_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/merges",
+    "archive_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/downloads",
+    "issues_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/labels{/name}",
+    "releases_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/matheussampaio/pr-reviewers-bot/deployments",
+    "created_at": "2018-06-06T04:15:53Z",
+    "updated_at": "2018-06-12T21:48:18Z",
+    "pushed_at": "2018-06-13T04:56:51Z",
+    "git_url": "git://github.com/matheussampaio/pr-reviewers-bot.git",
+    "ssh_url": "git@github.com:matheussampaio/pr-reviewers-bot.git",
+    "clone_url": "https://github.com/matheussampaio/pr-reviewers-bot.git",
+    "svn_url": "https://github.com/matheussampaio/pr-reviewers-bot",
+    "homepage": "https://github.com/apps/reviewers-bot",
+    "size": 196,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "JavaScript",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": false,
+    "has_pages": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "open_issues_count": 1,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "forks": 0,
+    "open_issues": 1,
+    "watchers": 0,
+    "default_branch": "master"
+  },
+  "sender": {
+    "login": "matheussampaio"
+  },
+  "installation": {
+    "id": 204221
+  }
+}
