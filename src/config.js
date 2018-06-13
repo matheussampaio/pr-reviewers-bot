@@ -9,27 +9,19 @@ class Config {
   }
 
   async load () {
-    this.config = await this.context.config(CONFIG_FILEPATH, {
-      min_reviewers_per_pr: 0,
-      reviewers: [],
-      shuffle_team: true
-    })
+    this.config = await this.context.config(CONFIG_FILEPATH)
   }
 
   get (path, defaults) {
     return _.get(this.config, path, defaults)
   }
 
-  enabled () {
-    return this.getMinTeviewersPerPR() && this.getTeam().length
-  }
-
-  getMinTeviewersPerPR () {
+  getMinReviewersPerPR () {
     return this.get('min_reviewers_per_pr', 0)
   }
 
   getTeam () {
-    return this.get('reviewers', [])
+    return this.get('team') || this.get('reviewers') || []
   }
 
   getShuffleTeam () {
