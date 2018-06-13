@@ -44,10 +44,10 @@ async function getPRInformation (context) {
   }
 }
 
-function findNextReviewersAndAddToPR ({ config, context, pr }) {
+async function findNextReviewersAndAddToPR ({ config, context, pr }) {
   const db = new Database(pr.repository)
 
-  const nextReviewers = getNextReviewers({ db, config, context, pr })
+  const nextReviewers = await getNextReviewers({ db, config, context, pr })
 
   return Promise.all([
     addReviewersToPR(context, nextReviewers),
@@ -55,11 +55,11 @@ function findNextReviewersAndAddToPR ({ config, context, pr }) {
   ])
 }
 
-function getNextReviewers ({ db, config, context, pr }) {
-  context.log.debug(db.getQueue(), 'current queue')
+async function getNextReviewers ({ db, config, context, pr }) {
+  context.log.debug(await db.getQueue(), 'current queue')
 
   const team = new Team({
-    queue: db.getQueue(),
+    queue: await db.getQueue(),
     team: config.getTeam(),
     numberOfReviewers: config.getMinReviewersPerPR() - pr.reviewers.length,
     shuffleTeam: config.getShuffleTeam()
@@ -71,7 +71,9 @@ function getNextReviewers ({ db, config, context, pr }) {
 
   context.log.info({ nextReviewers }, 'selected reviewers')
 
-  db.setQueue(team.getQueue())
+  if (!process.env.DRY_RUN) {
+    await db.setQueue(team.getQueue())
+  }
 
   return nextReviewers
 }

@@ -31,8 +31,8 @@
     "simulate:issue_comment:created": "probot simulate issue_comment ./test/fixtures/issue_comment.created.json ./src/index.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "lodash": "^4.17.10",
-    "lowdb": "^1.0.0",
     "probot": "^6.2.0",
     "probot-commands": "^1.0.1"
   },

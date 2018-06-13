@@ -1,30 +1,45 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
+const _ = require('lodash')
+const axios = require('axios')
 
-const adapter = new FileSync(process.env.DATABASE_FILENAME || 'db.json')
-const db = low(adapter)
+const BIN_URL = `https://api.jsonbin.io/b/${process.env.JSONBIN_ID}`
 
-const DEFAULTS = {
-  queue: []
+class JSONBin {
+  static async read () {
+    const { data } = await axios.get(`${BIN_URL}/latest`, {
+      headers: {
+        'secret-key': process.env.JSONBIN_KEY
+      }
+    })
+
+    return data || {}
+  }
+
+  static async save (data) {
+    await axios.put(BIN_URL, data, {
+      headers: {
+        'secret-key': process.env.JSONBIN_KEY
+      }
+    })
+  }
 }
 
 class Database {
   constructor (namespace) {
     this.namespace = namespace
-
-    this.init()
   }
 
-  init () {
-    db.defaults({ [this.namespace]: DEFAULTS }).write()
+  async getQueue () {
+    const data = await JSONBin.read()
+
+    return _.get(data, [this.namespace, 'queue'], [])
   }
 
-  getQueue () {
-    return db.get(`${this.namespace}.queue`).value()
-  }
+  async setQueue (queue) {
+    const data = await JSONBin.read()
 
-  setQueue (queue) {
-    db.set(`${this.namespace}.queue`, queue).write()
+    _.set(data, [this.namespace, 'queue'], queue)
+
+    return JSONBin.save(data)
   }
 }
 
