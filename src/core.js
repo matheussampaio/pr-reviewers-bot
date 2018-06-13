@@ -72,6 +72,8 @@ function getNextReviewers ({ db, config, context, pr }) {
   context.log.info({ nextReviewers }, 'selected reviewers')
 
   db.setQueue(team.getQueue())
+
+  return nextReviewers
 }
 
 function createCommentBodyAndPost (context, users) {
