@@ -2,13 +2,14 @@
 
 PR Reviewers Bot
 =================
+Small bot to suggest reviewers to Github pull requests
+
 
 ## How to install
 
 ```
 $ npm install
 ```
-
 
 ## How to test
 ```
@@ -21,19 +22,7 @@ or in watch mode:
 $ npm run test:watch
 ```
 
+## How to run
 
-TODO:
-
-1. read `.github/pr_review_bot.yml` file
-2. validate configurations
-  - don't run if:
-    - missing team
-    - missing gh_token
-    - missing repo name
-3. read/save state from file
-4. sending pr comment with the two selected user
-5. notify user on slack
-6. publish library to npm with semantic release
-7. don't run twice for the same pr
-8. get pr information from circle ci env variables
-9. try to read repository name from `package.json`
+1. Follow the instructions in [Probot documentation website](https://probot.github.io/docs/development/) to create the Github App and set all the environment variables. You can also take look at `.env.example`.
+2. Start the app with `npm start` or `npm run dev`

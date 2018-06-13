@@ -1,7 +1,7 @@
 {
   "name": "pr-reviewers-bot",
   "version": "0.0.0-development",
-  "description": "Small bot to suggest reviewers to PR's",
+  "description": "Small bot to suggest reviewers to Github pull requests",
   "main": "src/index.js",
   "private": true,
   "author": "Matheus Sampaio <matheus@sampaio.us> (http://matheus.sampaio.us)",
@@ -27,12 +27,14 @@
     "start": "probot run ./src/index.js",
     "test": "nyc --reporter=lcov ava && standard",
     "test:watch": "ava --watch",
-    "simulate:opened": "probot simulate pull_request ./test/fixtures/pull_request.opened.json ./src/index.js"
+    "simulate:pull_request:opened": "probot simulate pull_request ./test/fixtures/pull_request.opened.json ./src/index.js",
+    "simulate:issue_comment:created": "probot simulate issue_comment ./test/fixtures/issue_comment.created.json ./src/index.js"
   },
   "dependencies": {
     "lodash": "^4.17.10",
     "lowdb": "^1.0.0",
-    "probot": "^6.2.0"
+    "probot": "^6.2.0",
+    "probot-commands": "^1.0.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",
