@@ -1,6 +1,6 @@
 {
   "name": "pr-reviewers-bot",
-  "version": "0.0.0-development",
+  "version": "1.2.0",
   "description": "Small bot to suggest reviewers to Github pull requests",
   "main": "src/index.js",
   "private": true,
