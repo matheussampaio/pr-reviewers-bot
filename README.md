@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master.svg?style=svg)](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master) [![npm version](https://badge.fury.io/js/pr-reviewers-bot.svg)](https://badge.fury.io/js/pr-reviewers-bot)
+[![CircleCI](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master.svg?style=svg)](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master)
 
 PR Reviewers Bot
 =================

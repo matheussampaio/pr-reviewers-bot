@@ -30,7 +30,7 @@ jobs:
       - store_test_results:
           path: coverage
 
-  release_to_npm:
+  release_and_deploy:
     <<: *defaults
     steps:
       - restore_cache: &restore_src_cache
@@ -44,18 +44,6 @@ jobs:
             - v1-node_modules-
       - run: npm ci
       - run: npm run semantic-release
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - package.json
-
-  deploy:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
       - run:
           name: Deploy Master to Heroku
           command: |
@@ -67,16 +55,9 @@ workflows:
     jobs:
       - install_dependencies_and_test
 
-      - release_to_npm:
+      - release_and_deploy:
           requires:
             - install_dependencies_and_test
-          filters:
-            branches:
-              only: master
-
-      - deploy:
-          requires:
-            - release_to_npm
           filters:
             branches:
               only: master
