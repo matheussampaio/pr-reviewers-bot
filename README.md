@@ -1,28 +1,24 @@
-[![CircleCI](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master.svg?style=svg)](https://circleci.com/gh/matheussampaio/pr-reviewers-bot/tree/master)
 
 PR Reviewers Bot
 =================
-Small bot to suggest reviewers to Github pull requests
+> A GitHub App built with [Probot](https://github.com/probot/probot) that adds reviewers to Github pull requests.
+
+[![](https://user-images.githubusercontent.com/1020467/41391403-0e0661d0-6f60-11e8-88ba-03977963574f.png)](https://github.com/matheussampaio/pr-reviewers-bot)
 
 
-## How to install
+## Usage
 
+1. **[Configure the GitHub App](https://github.com/apps/pr-reviewers-bot)**
+2. Create `.github/pr-reviewers-bot.yml` based on the following template.
+3. It will start watching for created pull requests and adding reviewers.
+
+A `.github/pr-reviewers-bot.yml` file with `min_reviewers_per_pr` and `team` are required to enable the plugin:
+
+```yml
+min_reviewers_per_pr: 2
+team:
+  - github_username1
+  - github_username2
+  - github_username3
+  - github_username4
 ```
-$ npm install
-```
-
-## How to test
-```
-$ npm test
-```
-
-or in watch mode:
-
-```
-$ npm run test:watch
-```
-
-## How to run
-
-1. Follow the instructions in [Probot documentation website](https://probot.github.io/docs/development/) to create the Github App and set all the environment variables. You can also take look at `.env.example`.
-2. Start the app with `npm start` or `npm run dev`
