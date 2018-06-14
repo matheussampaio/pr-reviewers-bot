@@ -93,7 +93,7 @@ test('it should throw if not enough available reviewers', t => {
   t.throws(() => team.getNextReviewers({ filterUsers: ['p1', 'p2'] }))
 })
 
-test('xxxx', t => {
+test('suggestions should consider filtered users', t => {
   const team = new Team({ team: [ 'p1', 'p2', 'p3', 'p4', 'p5' ], numberOfReviewers: 3 })
 
   t.deepEqual(team.getNextReviewers({ filterUsers: ['p1'] }), ['p2', 'p3', 'p4'])
