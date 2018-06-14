@@ -1,9 +1,9 @@
 
 PR Reviewers Bot
 =================
-> A GitHub App built with [Probot](https://github.com/probot/probot) that adds reviewers to Github pull requests.
+A GitHub App built with [Probot](https://github.com/probot/probot) that adds reviewers to Github pull requests.
 
-[![](https://user-images.githubusercontent.com/1020467/41391403-0e0661d0-6f60-11e8-88ba-03977963574f.png)](https://github.com/matheussampaio/pr-reviewers-bot)
+> [![](https://user-images.githubusercontent.com/1020467/41391403-0e0661d0-6f60-11e8-88ba-03977963574f.png)](https://github.com/matheussampaio/pr-reviewers-bot)
 
 
 ## Usage
