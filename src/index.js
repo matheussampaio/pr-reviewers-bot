@@ -1,6 +1,5 @@
 const commands = require('probot-commands')
 
-const mongo = require('./mongo')
 const handlePullRequests = require('./core')
 
 module.exports = robot => {
