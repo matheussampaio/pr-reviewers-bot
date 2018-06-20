@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/matheussampaio/pr-reviewers-bot/compare/v1.3.0...v1.4.0) (2018-06-20)
+
+
+### Bug Fixes
+
+* remove unrequired line ([39b7684](https://github.com/matheussampaio/pr-reviewers-bot/commit/39b7684))
+
+
+### Features
+
+* add docker and mongodb ([c441503](https://github.com/matheussampaio/pr-reviewers-bot/commit/c441503))
+
 # [1.3.0](https://github.com/matheussampaio/pr-reviewers-bot/compare/v1.2.0...v1.3.0) (2018-06-14)
 
 
@@ -64,6 +76,3 @@
 * add reviewers file and tests ([408ab25](https://github.com/matheussampaio/pr-reviewers-bot/commit/408ab25))
 * add semantic-release ([5365b50](https://github.com/matheussampaio/pr-reviewers-bot/commit/5365b50))
 * add unique queues ([e70f1a8](https://github.com/matheussampaio/pr-reviewers-bot/commit/e70f1a8))
-
-
-
