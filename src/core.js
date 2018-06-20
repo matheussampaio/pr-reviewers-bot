@@ -49,6 +49,10 @@ async function findNextReviewersAndAddToPR ({ config, context, pr }) {
 
   const nextReviewers = await getNextReviewers({ db, config, context, pr })
 
+  if (!nextReviewers.length) {
+    return context.log.info(`can't find available reviewer...`)
+  }
+
   return Promise.all([
     addReviewersToPR(context, nextReviewers),
     createCommentBodyAndPost(context, nextReviewers)
@@ -56,8 +60,6 @@ async function findNextReviewersAndAddToPR ({ config, context, pr }) {
 }
 
 async function getNextReviewers ({ db, config, context, pr }) {
-  context.log.debug(await db.getQueue(), 'current queue')
-
   const team = new Team({
     queue: await db.getQueue(),
     team: config.getTeam(),

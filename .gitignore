@@ -2,6 +2,7 @@ node_modules/
 .vscode/
 .nyc_output/
 coverage/
+data/
 
 .env
 .DS_Store

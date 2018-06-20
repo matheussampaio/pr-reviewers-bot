@@ -33,6 +33,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
+    "monk": "^6.0.6",
     "probot": "^6.2.0",
     "probot-commands": "^1.0.1"
   },

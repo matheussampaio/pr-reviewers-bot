@@ -1,27 +1,6 @@
 const _ = require('lodash')
-const axios = require('axios')
 
-const BIN_URL = `https://api.jsonbin.io/b/${process.env.JSONBIN_ID}`
-
-class JSONBin {
-  static async read () {
-    const { data } = await axios.get(`${BIN_URL}/latest`, {
-      headers: {
-        'secret-key': process.env.JSONBIN_KEY
-      }
-    })
-
-    return data || {}
-  }
-
-  static async save (data) {
-    await axios.put(BIN_URL, data, {
-      headers: {
-        'secret-key': process.env.JSONBIN_KEY
-      }
-    })
-  }
-}
+const mongo = require('./mongo')
 
 class Database {
   constructor (namespace) {
@@ -29,17 +8,15 @@ class Database {
   }
 
   async getQueue () {
-    const data = await JSONBin.read()
+    const project = await mongo.get('projects').findOne({ name: this.namespace })
 
-    return _.get(data, [this.namespace, 'queue'], [])
+    return _.get(project, 'queue', [])
   }
 
   async setQueue (queue) {
-    const data = await JSONBin.read()
+    console.log('Database:setQueue')
 
-    _.set(data, [this.namespace, 'queue'], queue)
-
-    return JSONBin.save(data)
+    await mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, queue }, { upsert: true })
   }
 }
 
