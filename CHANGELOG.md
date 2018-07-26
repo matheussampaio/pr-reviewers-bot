@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/matheussampaio/pr-reviewers-bot/compare/v1.4.0...v1.5.0) (2018-07-26)
+
+
+### Features
+
+* calculate team md5 hash and reset team queu if hash is different ([9eb7f35](https://github.com/matheussampaio/pr-reviewers-bot/commit/9eb7f35))
+
 # [1.4.0](https://github.com/matheussampaio/pr-reviewers-bot/compare/v1.3.0...v1.4.0) (2018-06-20)
 
 
