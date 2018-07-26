@@ -47,6 +47,8 @@ async function getPRInformation (context) {
 async function findNextReviewersAndAddToPR ({ config, context, pr }) {
   const db = new Database(pr.repository)
 
+  await validateTeamConfiguration({ db, config })
+
   const nextReviewers = await getNextReviewers({ db, config, context, pr })
 
   if (!nextReviewers.length) {
@@ -57,6 +59,18 @@ async function findNextReviewersAndAddToPR ({ config, context, pr }) {
     addReviewersToPR(context, nextReviewers),
     createCommentBodyAndPost(context, nextReviewers)
   ])
+}
+
+async function validateTeamConfiguration({ db, config }) {
+  const currentTeamHash = await db.getTeamHash()
+  const configTeamHash = config.getTeamHash()
+
+  if (currentTeamHash !== configTeamHash) {
+    return Promise.all([
+      db.clearQueue(),
+      db.setTeamHash(configTeamHash)
+    ])
+  }
 }
 
 async function getNextReviewers ({ db, config, context, pr }) {

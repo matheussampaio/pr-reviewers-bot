@@ -1,5 +1,7 @@
 const _ = require('lodash')
 
+const { md5 } = require('./utils')
+
 const CONFIG_FILEPATH = process.env.CONFIGURATION_FILENAME || 'pr-reviewers-bot.yml'
 
 class Config {
@@ -26,6 +28,13 @@ class Config {
 
   getShuffleTeam () {
     return this.get('shuffle_team', true)
+  }
+
+  getTeamHash() {
+    const team = this.getTeam()
+    const teamSorted = team.sort((a, b) => a > b)
+
+    return md5(teamSorted)
   }
 }
 

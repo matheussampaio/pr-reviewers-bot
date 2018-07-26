@@ -13,10 +13,22 @@ class Database {
     return _.get(project, 'queue', [])
   }
 
-  async setQueue (queue) {
-    console.log('Database:setQueue')
+  setQueue (queue) {
+    return mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, queue }, { upsert: true })
+  }
 
-    await mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, queue }, { upsert: true })
+  clearQueue() {
+    return this.setQueue([])
+  }
+
+  async getTeamHash() {
+    const project = await mongo.get('projects').findOne({ name: this.namespace })
+
+    return _.get(project, 'teamHash', '')
+  }
+
+  setTeamHash(teamHash) {
+    return mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, teamHash }, { upsert: true })
   }
 }
 
