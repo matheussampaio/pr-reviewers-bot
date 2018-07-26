@@ -17,17 +17,17 @@ class Database {
     return mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, queue }, { upsert: true })
   }
 
-  clearQueue() {
+  clearQueue () {
     return this.setQueue([])
   }
 
-  async getTeamHash() {
+  async getTeamHash () {
     const project = await mongo.get('projects').findOne({ name: this.namespace })
 
     return _.get(project, 'teamHash', '')
   }
 
-  setTeamHash(teamHash) {
+  setTeamHash (teamHash) {
     return mongo.get('projects').update({ name: this.namespace }, { name: this.namespace, teamHash }, { upsert: true })
   }
 }

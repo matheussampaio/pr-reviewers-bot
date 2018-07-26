@@ -61,7 +61,7 @@ async function findNextReviewersAndAddToPR ({ config, context, pr }) {
   ])
 }
 
-async function validateTeamConfiguration({ db, config }) {
+async function validateTeamConfiguration ({ db, config }) {
   const currentTeamHash = await db.getTeamHash()
   const configTeamHash = config.getTeamHash()
 

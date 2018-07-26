@@ -30,7 +30,7 @@ class Config {
     return this.get('shuffle_team', true)
   }
 
-  getTeamHash() {
+  getTeamHash () {
     const team = this.getTeam()
     const teamSorted = team.sort((a, b) => a > b)
 
