@@ -21,3 +21,7 @@ team:
   - github_username3
   - github_username4
 ```
+
+## License
+
+[MIT](https://github.com/matheussampaio/pr-reviewers-bot/blob/master/LICENSE)
