@@ -2,7 +2,7 @@ PR Reviewers Bot
 =================
 A GitHub App built with [Probot](https://github.com/probot/probot) that adds reviewers to Github pull requests.
 
-> [![](https://user-images.githubusercontent.com/1020467/41391403-0e0661d0-6f60-11e8-88ba-03977963574f.png)](https://github.com/matheussampaio/pr-reviewers-bot)
+> [![](https://user-images.githubusercontent.com/1020467/41391403-0e0661d0-6f60-11e8-88ba-03977963574f.png)](https://github.com/matheussampaio/pr-reviewers-bot) [![Greenkeeper badge](https://badges.greenkeeper.io/matheussampaio/pr-reviewers-bot.svg)](https://greenkeeper.io/)
 
 
 ## Usage
