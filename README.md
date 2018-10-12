@@ -1,4 +1,4 @@
-[![Greenkeeper badge](https://badges.greenkeeper.io/matheussampaio/pr-reviewers-bot.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/matheussampaio/pr-reviewers-bot.svg)](https://greenkeeper.io/) [![CircleCI](https://circleci.com/gh/matheussampaio/pr-reviewers-bot.svg?style=svg)](https://circleci.com/gh/matheussampaio/pr-reviewers-bot)
 
 PR Reviewers Bot
 =================
