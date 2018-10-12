@@ -1,9 +1,9 @@
-node_modules/
-.vscode/
 .nyc_output/
+.vscode/
 coverage/
 data/
+node_modules/
 
-.env
 .DS_Store
+.env
 *.pem

@@ -1,4 +1,9 @@
-node_modules/
-.vscode/
+.circleci/
+.github/
 .nyc_output/
+.vscode/
+coverage/
+node_modules/
+
 npm-debug.log
+*.md
